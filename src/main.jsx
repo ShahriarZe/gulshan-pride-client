@@ -6,11 +6,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import App from './App';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Gulshan Pride</div>,
+    element: <App></App>,
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
