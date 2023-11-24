@@ -1,10 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import def from '../../assets/user.png'
+import useAuth from '../../Hooks/useAuth';
 
 const NavBar = () => {
+
+    const { user, logOut } = useAuth()
+
     const links = <>
-       <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
+        <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
         <li><a>Apartment</a></li>
     </>
     return (
@@ -15,9 +19,9 @@ const NavBar = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52 border-2 border-red-700">
-                       {
-                        links
-                       }
+                        {
+                            links
+                        }
                     </ul>
                 </div>
                 <Link to='/'><img className='lg:w-6/12 invisible md:visible' src={logo} alt="" /></Link>
@@ -30,18 +34,26 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-            <div className="dropdown dropdown-end ">
+                <div className="dropdown dropdown-end ">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src={def} alt="" />
+                            {
+                                user ? <img src={user.photoURL} alt="" /> :
+                                    <img src={def} alt="" />
+                            }
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52 border-2 border-red-700  z-10">
                         <div className="text-xl text-center">
-                            <h2>Dashboard</h2>
+                            {
+                                user && <h1 className='border-b border-red-700 font-bold'>{user.displayName}</h1>
+                            }
                         </div>
                         <div className="text-xl text-center">
-                            <Link to="/login"><button className='btn btn-outline'>Login</button></Link>
+                            {
+                                user ? <button onClick={logOut}>SignOut</button> :
+                                    <Link to="/login"><button className="btn btn-outline w-full">Login</button></Link>
+                            }
                         </div>
                     </ul>
                 </div>
