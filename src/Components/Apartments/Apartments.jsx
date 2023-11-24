@@ -7,13 +7,12 @@ const Apartments = () => {
     const itemsPerPage = 6;
 
     useEffect(() => {
-        fetch('apartment.json')
+        fetch('/apartment.json')
             .then(res => res.json())
             .then(data => setApart(data))
     }, []);
 
     const maxPages = Math.ceil(apart.length / itemsPerPage);
-
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     const nextPage = () => {

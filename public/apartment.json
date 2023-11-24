@@ -27,7 +27,7 @@
     "ID": 4,
     "ApartmentImage": "https://i.ibb.co/Jx7dmF3/room-4.jpg",
     "FloorNo": 6,
-    "BlockName": "A",
+    "BlockName": "B",
     "ApartmentNo": "402",
     "Rent": 1800
   },
@@ -35,7 +35,7 @@
     "ID": 5,
     "ApartmentImage": "https://i.ibb.co/xGGd4xm/room-5.jpg",
     "FloorNo": 4,
-    "BlockName": "B",
+    "BlockName": "D",
     "ApartmentNo": "503",
     "Rent": 1400
   },
@@ -51,7 +51,7 @@
     "ID": 7,
     "ApartmentImage": "https://i.ibb.co/mXwgcbC/room-7.jpg",
     "FloorNo": 7,
-    "BlockName": "A",
+    "BlockName": "D",
     "ApartmentNo": "704",
     "Rent": 2000
   },
@@ -107,7 +107,7 @@
     "ID": 14,
     "ApartmentImage": "https://i.ibb.co/wsn9VCy/room-14.jpg",
     "FloorNo": 7,
-    "BlockName": "B",
+    "BlockName": "D",
     "ApartmentNo": "1407",
     "Rent": 2000
   },
