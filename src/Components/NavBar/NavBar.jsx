@@ -8,7 +8,7 @@ const NavBar = () => {
         <li><a>Apartment</a></li>
     </>
     return (
-        <div className="navbar bg-base-100 shadow-xl max-w-screen-xl mx-auto">
+        <div className="navbar bg-base-100 shadow-xl max-w-screen-xl mx-auto border-x-2 border-red-700">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -36,7 +36,7 @@ const NavBar = () => {
                             <img src={def} alt="" />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 border">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 border-2 border-red-700">
                         <div className="text-xl text-center">
                             <h2>Dashboard</h2>
                         </div>
