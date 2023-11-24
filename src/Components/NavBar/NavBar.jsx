@@ -9,7 +9,7 @@ const NavBar = () => {
 
     const links = <>
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
-        <li><a>Apartment</a></li>
+        <li className="lg:mr-5"><NavLink to='/apartments'>Apartments</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-xl max-w-screen-xl mx-auto border-x-2 border-red-700">
