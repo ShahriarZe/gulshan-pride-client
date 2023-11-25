@@ -12,6 +12,7 @@ import Register from './Components/Login/Register';
 import Login from './Components/Login/Login';
 import AuthProvider from './Providers/AuthProvider';
 import Apartments from './Components/Apartments/Apartments';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/apartments",
-        element:<Apartments></Apartments>
+        element:<PrivateRoute><Apartments></Apartments></PrivateRoute>
       }
     ]
   },

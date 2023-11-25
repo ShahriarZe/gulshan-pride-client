@@ -58,7 +58,7 @@ const AuthProvider = ({children}) => {
         createUser,
         signInUser,
         logOut,
-        user
+        user,
     }
     return (
       <AuthContext.Provider value={authentications}>

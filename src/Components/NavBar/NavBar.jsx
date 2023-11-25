@@ -46,7 +46,7 @@ const NavBar = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  p-2 shadow bg-base-100 rounded-box w-52 border-2 border-red-700  z-10">
                         <div className="text-xl text-center">
                             {
-                                user && <h1 className='border-b border-red-700 font-bold'>{user.displayName}</h1>
+                                user && <h1 className='border-b border-red-700 font-bold'>{user?.displayName}</h1> 
                             }
                         </div>
                         <div className="text-xl text-center">

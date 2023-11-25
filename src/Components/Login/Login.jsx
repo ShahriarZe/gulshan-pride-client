@@ -13,6 +13,7 @@ const Login = () => {
 
     const navigate = useNavigate()
     const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
     const [errorText, setErrorText] = useState('')
 
     const { googleSignIn, signInUser } = useAuth()
@@ -29,12 +30,12 @@ const Login = () => {
             .then(result => {
                 console.log(result.user);
                 e.target.reset()
-                navigate(location?.state ? location?.state : '/')
                 Swal.fire({
                     icon: 'success',
                     title: 'Congratulations...',
                     text: 'Login Successfull',
                 })
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 setErrorText(err.message)
@@ -52,12 +53,12 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 console.log(result.user);
-                navigate(location?.state ? location.state : '/')
                 Swal.fire({
                     icon: 'success',
                     title: 'Congratulations...',
                     text: 'Login Successfull',
                 })
+                navigate(from, { replace: true })
             })
             .catch(err => {
                 console.log(err);
