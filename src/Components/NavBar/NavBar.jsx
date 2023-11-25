@@ -13,7 +13,7 @@ const NavBar = () => {
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
         <li className="lg:mr-5"><NavLink to='/apartments'>Apartments</NavLink></li>
         <li>
-            <Link>
+            <Link to="/dashboard/agreements">
                 Agreement Requests
                 <div className="badge">{agreement.length}</div>
             </Link>

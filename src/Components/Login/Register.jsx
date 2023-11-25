@@ -4,14 +4,17 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import regiBG from '../../assets/regiBG.png'
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
+
+    const axiosPublic = useAxiosPublic()
 
     const bgStyle = {
         backgroundImage: `url(${regiBG})`,
     }
 
-    const { createUser,googleSignIn } = useAuth()
+    const { createUser, googleSignIn } = useAuth()
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -56,13 +59,23 @@ const Register = () => {
                     displayName: name,
                     photoURL: image
                 })
-                navigate(location?.state ? location?.state : "/")
-                e.target.reset()
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Congratulations...',
-                    text: 'Registration Successfull',
-                })
+                const userInfo = {
+                    name: name,
+                    email: email
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            navigate(location?.state ? location?.state : "/")
+                            e.target.reset()
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Congratulations...',
+                                text: 'Registration Successfull',
+                            })
+                        }
+                    })
+
             })
             .catch(err => {
                 console.log(err)
@@ -75,20 +88,28 @@ const Register = () => {
             })
     }
 
-    const handleGoogleButton =()=>{
+    const handleGoogleButton = () => {
         googleSignIn()
-        .then(result =>{
-            console.log(result.user)
-            navigate(location?.state ? location?.state : "/")
-            Swal.fire({
-                icon: 'success',
-                title: 'Congratulations...',
-                text: 'Login Successfull',
+            .then(result => {
+                console.log(result.user)
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                navigate(location?.state ? location?.state : "/")
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Congratulations...',
+                    text: 'Login Successfull',
+                })
             })
-        })
-        .catch(err =>{
-            console.log(err)
-        })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     return (

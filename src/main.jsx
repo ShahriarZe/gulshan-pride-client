@@ -16,6 +16,9 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Dashboard from './Components/Dashboard/Dashboard';
+import Agreements from './Components/Dashboard/Agreements/Agreements';
+import PrivateRoute from './Routes/PrivateRoute';
 
 const queryClient = new QueryClient()
 
@@ -42,6 +45,16 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "dashboard",
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children: [
+      {
+        path: 'agreements',
+        element: <PrivateRoute><Agreements></Agreements></PrivateRoute>
+      }
+    ]
+  }
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
