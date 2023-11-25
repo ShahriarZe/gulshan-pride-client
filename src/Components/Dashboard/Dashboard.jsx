@@ -2,11 +2,12 @@ import logo from '../../assets/logo.png'
 import { FaGift, FaHome, FaList, FaMicroblog, FaUser, FaUsers } from "react-icons/fa";
 import { MdApartment } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from '../../Hooks/useAdmin';
 
 
 const Dashboard = () => {
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="flex max-w-7xl mx-auto">
