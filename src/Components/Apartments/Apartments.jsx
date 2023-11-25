@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ApartCard from "./ApartCard";
+import useApart from "../../Hooks/useApart";
 
 const Apartments = () => {
-    const [apart, setApart] = useState([]);
+    
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 6;
 
-    useEffect(() => {
-        fetch('/apartment.json')
-            .then(res => res.json())
-            .then(data => setApart(data))
-    }, []);
+
+    // const [apart, setApart] = useState([]);
+    // useEffect(() => {
+    //     fetch('/apartment.json')
+    //         .then(res => res.json())
+    //         .then(data => setApart(data))
+    // }, []);
+
+    const [apart]=useApart()
+
+
 
     const maxPages = Math.ceil(apart.length / itemsPerPage);
     const paginate = pageNumber => setCurrentPage(pageNumber);

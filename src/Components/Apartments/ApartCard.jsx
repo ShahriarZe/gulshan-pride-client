@@ -4,7 +4,7 @@
 const ApartCard = ({ item }) => {
     const { ApartmentImage, BlockName, FloorNo, ApartmentNo, Rent } = item
     return (
-        <div className="card card-compact  bg-base-100 shadow-xl">
+        <div className="card card-compact  bg-base-100 shadow-xl border-2">
             <figure><img className=" md:h-[180px] lg:h-[300px]" src={ApartmentImage} alt="Shoes" /></figure>
             <div className="card-body">
                 <div className="flex justify-between mb-2">
