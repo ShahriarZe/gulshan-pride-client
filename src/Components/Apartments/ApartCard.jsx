@@ -4,11 +4,13 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAgreement from "../../Hooks/useAgreement";
 
 
 const ApartCard = ({ item }) => {
 
-    const axiosSecure=useAxiosSecure()
+    const axiosSecure = useAxiosSecure()
+    const [,refetch] = useAgreement()
 
 
     const { user } = useAuth();
@@ -16,30 +18,33 @@ const ApartCard = ({ item }) => {
     const location = useLocation();
 
     const { ApartmentImage, BlockName, FloorNo, ApartmentNo, Rent, _id } = item
+
+
     const handleAggrement = () => {
         if (user && user.email) {
             const agreement = {
                 agreementId: _id,
                 email: user.email,
-                userName:user.displayName,
+                userName: user.displayName,
                 BlockName,
                 FloorNo,
                 ApartmentNo,
                 Rent,
-                status:"Pending"
+                status: "Pending"
             }
-            axiosSecure.post('/agreements',agreement)
-            .then(res=>{
-                console.log(res.data)
-                if(res.data.insertedId){
-                    Swal.fire({
-                        icon: "success",
-                        title: "Your Agreement has been saved",
-                        showConfirmButton: false,
-                        timer: 1500
-                      }); 
-                }
-            })
+            axiosSecure.post('/agreements', agreement)
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Your Agreement has been saved",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        refetch()
+                    }
+                })
         }
         else {
             Swal.fire({

@@ -2,10 +2,12 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import def from '../../assets/user.png'
 import useAuth from '../../Hooks/useAuth';
+import useAgreement from '../../Hooks/useAgreement';
 
 const NavBar = () => {
 
     const { user, logOut } = useAuth()
+    const [agreement]=useAgreement()
 
     const links = <>
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
@@ -13,7 +15,7 @@ const NavBar = () => {
         <li>
             <Link>
                 Agreement Requests
-                <div className="badge">+99</div>
+                <div className="badge">{agreement.length}</div>
             </Link>
         </li>
     </>
