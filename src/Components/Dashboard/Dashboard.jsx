@@ -5,17 +5,33 @@ import { NavLink, Outlet } from "react-router-dom";
 
 
 const Dashboard = () => {
+
+    const isAdmin = true;
+
     return (
         <div className="flex max-w-7xl mx-auto">
             <div className="w-44 lg:w-64 min-h-screen bg-red-300">
                 <ul className="menu ">
                     <img className='p-2' src={logo} alt="" />
                     <div className="divider"></div>
-                    <li><NavLink to="/dashboard/adminHome"><FaUser /> Admin Home</NavLink></li>
-                    <li><NavLink to="/dashboard/agreements"><FaList /> Agreement Requests</NavLink></li>
-                    <li><NavLink to="/dashboard/manageMembers"><FaUsers /> Manage Members</NavLink></li>
-                    <li><NavLink to="/dashboard/makeAnnouncements"><FaMicroblog /> Make Announcement</NavLink></li>
-                    <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
+                    {
+                        isAdmin ?
+                            <>
+                                <li><NavLink to="/dashboard/adminHome"><FaUser /> Admin Home</NavLink></li>
+                                <li><NavLink to="/dashboard/agreements"><FaList /> Agreement Requests</NavLink></li>
+                                <li><NavLink to="/dashboard/manageMembers"><FaUsers /> Manage Members</NavLink></li>
+                                <li><NavLink to="/dashboard/makeAnnouncements"><FaMicroblog /> Make Announcement</NavLink></li>
+                                <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
+                            </>
+                            :
+                            <>
+                                <li><NavLink to="/dashboard/adminHome"><FaUser /> Admin Home</NavLink></li>
+                                <li><NavLink to="/dashboard/agreements"><FaList /> Agreement Requests</NavLink></li>
+                                <li><NavLink to="/dashboard/manageMembers"><FaUsers /> Manage Members</NavLink></li>
+                                <li><NavLink to="/dashboard/makeAnnouncements"><FaMicroblog /> Make Announcement</NavLink></li>
+                                <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
+                            </>
+                    }
 
                     <div className="divider"></div>
 

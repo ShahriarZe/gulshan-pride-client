@@ -19,6 +19,7 @@ import {
 import Dashboard from './Components/Dashboard/Dashboard';
 import Agreements from './Components/Dashboard/Agreements/Agreements';
 import PrivateRoute from './Routes/PrivateRoute';
+import ManageMembers from './Components/Dashboard/ManageMembers/ManageMembers';
 
 const queryClient = new QueryClient()
 
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
       {
         path: 'agreements',
         element: <PrivateRoute><Agreements></Agreements></PrivateRoute>
+      },
+      // Admin routes
+      {
+        path:'manageMembers',
+        element:<ManageMembers></ManageMembers>
       }
     ]
   }
