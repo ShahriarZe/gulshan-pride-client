@@ -1,10 +1,12 @@
-import useAgreement from "../../../Hooks/useAgreement";
+
+import useAllAgreements from "../../../Hooks/useAllAgreements";
 
 const Agreements = () => {
-    const [agreement] = useAgreement()
+    const [allAgreements] = useAllAgreements()
+    console.log(allAgreements);
     return (
         <div className="p-6">
-            <h2>Total Agreements Request : {agreement.length}</h2>
+            <h2>Total Agreements Request : {allAgreements.length}</h2>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">
@@ -25,7 +27,7 @@ const Agreements = () => {
                         </thead>
                         <tbody>
                             {
-                                agreement.map((item, idx) => <tr key={item._id}>
+                                allAgreements.map((item, idx) => <tr key={item._id}>
                                     <th>{idx + 1}</th>
                                     <th>{item.userName}</th>
                                     <td>{item.email}</td>

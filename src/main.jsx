@@ -22,6 +22,7 @@ import PrivateRoute from './Routes/PrivateRoute';
 import ManageMembers from './Components/Dashboard/ManageMembers/ManageMembers';
 import Announcements from './Components/Dashboard/Announcements/Announcements';
 import AdminRoute from './Routes/AdminRoute';
+import ManageCoupons from './Components/Dashboard/ManageCoupons/ManageCoupons';
 
 const queryClient = new QueryClient()
 
@@ -52,11 +53,11 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
+      // Admin routes
       {
         path: 'agreements',
         element: <AdminRoute><Agreements></Agreements></AdminRoute>
       },
-      // Admin routes
       {
         path: 'manageMembers',
         element: <AdminRoute><ManageMembers></ManageMembers></AdminRoute>
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: 'makeAnnouncements',
         element: <AdminRoute><Announcements></Announcements></AdminRoute>
+      },
+      {
+        path:'manageCoupons',
+        element:<AdminRoute><ManageCoupons></ManageCoupons></AdminRoute>
       }
     ]
   }
