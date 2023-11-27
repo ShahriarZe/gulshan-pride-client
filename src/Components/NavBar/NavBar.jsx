@@ -2,22 +2,28 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import def from '../../assets/user.png'
 import useAuth from '../../Hooks/useAuth';
-import useAllAgreements from '../../Hooks/useAllAgreements';
+import useAdmin from '../../Hooks/useAdmin';
 
 const NavBar = () => {
 
     const { user, logOut } = useAuth()
-    const [allAgreements]=useAllAgreements()
+    const [isAdmin]=useAdmin()
 
     const links = <>
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
         <li className="lg:mr-5"><NavLink to='/apartments'>Apartments</NavLink></li>
-        <li>
+        {
+            user && isAdmin && <li className="lg:mr-5"><NavLink to='/dashboard/adminHome'>Dashboard</NavLink></li>
+        }
+        {
+            user && !isAdmin && <li className="lg:mr-5"><NavLink to='/dashboard/memberHome'>Dashboard</NavLink></li>
+        }
+        {/* <li>
             <Link to="/dashboard/agreements">
                 Agreement Requests
                 <div className="badge">{allAgreements.length}</div>
             </Link>
-        </li>
+        </li> */}
     </>
     return (
         <div className="navbar bg-base-100 shadow-xl max-w-screen-xl mx-auto border-x-2 border-red-700">

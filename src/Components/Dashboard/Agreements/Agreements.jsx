@@ -3,7 +3,6 @@ import useAllAgreements from "../../../Hooks/useAllAgreements";
 
 const Agreements = () => {
     const [allAgreements] = useAllAgreements()
-    console.log(allAgreements);
     return (
         <div className="p-6">
             <h2>Total Agreements Request : {allAgreements.length}</h2>
@@ -16,8 +15,8 @@ const Agreements = () => {
                                 <th>#</th>
                                 <th>User Name</th>
                                 <th>User Email</th>
-                                <th>Floor No</th>
                                 <th>Rent</th>
+                                <th>Floor No</th>
                                 <th>Room No</th>
                                 <th>Block No</th>
                                 <th>Status</th>
@@ -31,8 +30,8 @@ const Agreements = () => {
                                     <th>{idx + 1}</th>
                                     <th>{item.userName}</th>
                                     <td>{item.email}</td>
+                                    <td>{item.Rent}$</td>
                                     <td>{item.FloorNo}</td>
-                                    <td>{item.Rent} $</td>
                                     <td>{item.ApartmentNo}</td>
                                     <td>{item.BlockName}</td>
                                     <td>{item.status}</td>

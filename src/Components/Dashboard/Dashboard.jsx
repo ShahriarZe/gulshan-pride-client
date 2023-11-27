@@ -6,6 +6,7 @@ import useAdmin from '../../Hooks/useAdmin';
 
 
 const Dashboard = () => {
+    
 
     const [isAdmin] = useAdmin();
 
@@ -25,13 +26,12 @@ const Dashboard = () => {
                                 <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
                             </>
                             :
-                            <>
-                                <li><NavLink to="/dashboard/adminHome"><FaUser /> Admin Home</NavLink></li>
-                                <li><NavLink to="/dashboard/agreements"><FaList /> Agreement Requests</NavLink></li>
-                                <li><NavLink to="/dashboard/manageMembers"><FaUsers /> Manage Members</NavLink></li>
-                                <li><NavLink to="/dashboard/makeAnnouncements"><FaMicroblog /> Make Announcement</NavLink></li>
-                                <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
-                            </>
+                                <>
+                                    <li><NavLink to="/dashboard/memberHome"><FaUser /> My Profile</NavLink></li>
+                                    <li><NavLink to="/dashboard/makePayment"><FaList /> Make Payment</NavLink></li>
+                                    <li><NavLink to="/dashboard/paymentHistory"><FaUsers /> Payment History</NavLink></li>
+                                    <li><NavLink to="/dashboard/announcements"><FaMicroblog /> Announcements</NavLink></li>
+                                </>
                     }
 
                     <div className="divider"></div>
@@ -49,3 +49,12 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+{/* <>
+                                <li><NavLink to="/dashboard/adminHome"><FaUser /> Admin Home</NavLink></li>
+                                <li><NavLink to="/dashboard/agreements"><FaList /> Agreement Requests</NavLink></li>
+                                <li><NavLink to="/dashboard/manageMembers"><FaUsers /> Manage Members</NavLink></li>
+                                <li><NavLink to="/dashboard/makeAnnouncements"><FaMicroblog /> Make Announcement</NavLink></li>
+                                <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
+                            </> */}

@@ -23,6 +23,9 @@ import ManageMembers from './Components/Dashboard/ManageMembers/ManageMembers';
 import Announcements from './Components/Dashboard/Announcements/Announcements';
 import AdminRoute from './Routes/AdminRoute';
 import ManageCoupons from './Components/Dashboard/ManageCoupons/ManageCoupons';
+import AdminHome from './Components/Dashboard/AdminHome/AdminHome';
+import MemberHome from './Components/Dashboard/MemberHome/MemberHome';
+import AllAnnouncements from './Components/Dashboard/Announcements/AllAnnouncements';
 
 const queryClient = new QueryClient()
 
@@ -67,8 +70,21 @@ const router = createBrowserRouter([
         element: <AdminRoute><Announcements></Announcements></AdminRoute>
       },
       {
-        path:'manageCoupons',
-        element:<AdminRoute><ManageCoupons></ManageCoupons></AdminRoute>
+        path: 'manageCoupons',
+        element: <AdminRoute><ManageCoupons></ManageCoupons></AdminRoute>
+      },
+      {
+        path: 'adminHome',
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+      },
+      // Members routes
+      {
+        path: 'memberHome',
+        element: <MemberHome></MemberHome>
+      },
+      {
+        path:'announcements',
+        element:<AllAnnouncements></AllAnnouncements>
       }
     ]
   }

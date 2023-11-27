@@ -10,7 +10,7 @@ import useAgreement from "../../Hooks/useAgreement";
 const ApartCard = ({ item }) => {
 
     const axiosSecure = useAxiosSecure()
-    const [,refetch] = useAgreement()
+    const [, refetch] = useAgreement()
 
 
     const { user } = useAuth();
@@ -19,9 +19,20 @@ const ApartCard = ({ item }) => {
 
     const { ApartmentImage, BlockName, FloorNo, ApartmentNo, Rent, _id } = item
 
+    // var today = new Date();
+    // var year = today.getFullYear();
+    // var mes = today.getMonth() + 1;
+    // var dia = today.getDate();
 
     const handleAggrement = () => {
         if (user && user.email) {
+            // const months = [
+            //     "January", "February", "March", "April",
+            //     "May", "June", "July", "August",
+            //     "September", "October", "November", "December"
+            // ]
+            // const randomMonthIndex = Math.floor(Math.random() * 12);
+            // const randomMonth = months[randomMonthIndex];
             const agreement = {
                 agreementId: _id,
                 email: user.email,
@@ -30,7 +41,8 @@ const ApartCard = ({ item }) => {
                 FloorNo,
                 ApartmentNo,
                 Rent,
-                status: "Pending"
+                // month: randomMonth,
+                status: "Pending",
             }
             axiosSecure.post('/agreements', agreement)
                 .then(res => {
