@@ -3,12 +3,14 @@ import { FaGift, FaHome, FaList, FaMicroblog, FaMoneyBillAlt, FaUser, FaUsers } 
 import { MdApartment } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from '../../Hooks/useAdmin';
+import useMemberRole from '../../Hooks/useMemberRole';
 
 
 const Dashboard = () => {
 
 
     const [isAdmin] = useAdmin();
+    const [isMember] = useMemberRole()
 
     return (
         <div className="flex max-w-7xl mx-auto">
@@ -25,13 +27,21 @@ const Dashboard = () => {
                                 <li><NavLink to="/dashboard/makeAnnouncements"><FaMicroblog /> Make Announcement</NavLink></li>
                                 <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
                             </>
+
                             :
-                            <>
-                                <li><NavLink to="/dashboard/memberHome"><FaUser /> My Profile</NavLink></li>
-                                <li><NavLink to="/dashboard/makePayment"><FaMoneyBillAlt /> Make Payment</NavLink></li>
-                                <li><NavLink to="/dashboard/paymentHistory"><FaUsers /> Payment History</NavLink></li>
-                                <li><NavLink to="/dashboard/announcements"><FaMicroblog /> Announcements</NavLink></li>
-                            </>
+                            isMember ?
+                                <>
+                                    <li><NavLink to="/dashboard/memberHome"><FaUser /> My Profile</NavLink></li>
+                                    <li><NavLink to="/dashboard/makePayment"><FaMoneyBillAlt /> Make Payment</NavLink></li>
+                                    <li><NavLink to="/dashboard/paymentHistory"><FaUsers /> Payment History</NavLink></li>
+                                    <li><NavLink to="/dashboard/announcements"><FaMicroblog /> Announcements</NavLink></li>
+                                </>
+                                :
+                                <>
+                                    <li><NavLink to="/dashboard/userHome"><FaUser /> User Profile</NavLink></li>
+                                    <li><NavLink to="/dashboard/announcements"><FaMicroblog /> Announcements</NavLink></li>
+                                </>
+
                     }
 
                     <div className="divider"></div>
