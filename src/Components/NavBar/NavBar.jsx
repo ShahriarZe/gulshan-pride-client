@@ -7,23 +7,11 @@ import useAdmin from '../../Hooks/useAdmin';
 const NavBar = () => {
 
     const { user, logOut } = useAuth()
-    const [isAdmin]=useAdmin()
+    const [isAdmin] = useAdmin()
 
     const links = <>
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
         <li className="lg:mr-5"><NavLink to='/apartments'>Apartments</NavLink></li>
-        {
-            user && isAdmin && <li className="lg:mr-5"><NavLink to='/dashboard/adminHome'>Dashboard</NavLink></li>
-        }
-        {
-            user && !isAdmin && <li className="lg:mr-5"><NavLink to='/dashboard/memberHome'>Dashboard</NavLink></li>
-        }
-        {/* <li>
-            <Link to="/dashboard/agreements">
-                Agreement Requests
-                <div className="badge">{allAgreements.length}</div>
-            </Link>
-        </li> */}
     </>
     return (
         <div className="navbar bg-base-100 shadow-xl max-w-screen-xl mx-auto border-x-2 border-red-700">
@@ -63,10 +51,17 @@ const NavBar = () => {
                                 user && <h1 className='border-b border-red-700 font-bold'>{user?.displayName}</h1>
                             }
                         </div>
-                        <div className="text-xl text-center">
+                        <div className="">
                             {
-                                user ? <button onClick={logOut}>SignOut</button> :
-                                    <Link to="/login"><button className="btn btn-outline w-full">Login</button></Link>
+                                user && isAdmin && <NavLink to='/dashboard/adminHome'><button className="btn btn-outline w-full my-2 text-red-700">Dashboard</button></NavLink>
+                            }
+                            {
+                                user && !isAdmin && <NavLink to='/dashboard/memberHome'><button className="btn btn-outline w-full my-2 text-red-700">Dashboard</button></NavLink>
+                            }
+                            {
+                                user ? <button className="btn btn-outline w-full text-red-700" onClick={logOut}>SignOut</button>
+                                    :
+                                    <Link to="/login"><button className="btn btn-outline w-full text-red-700">Login</button></Link>
                             }
                         </div>
                     </ul>

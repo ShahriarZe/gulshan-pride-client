@@ -1,12 +1,12 @@
 import logo from '../../assets/logo.png'
-import { FaGift, FaHome, FaList, FaMicroblog, FaUser, FaUsers } from "react-icons/fa";
+import { FaGift, FaHome, FaList, FaMicroblog, FaMoneyBillAlt, FaUser, FaUsers } from "react-icons/fa";
 import { MdApartment } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from '../../Hooks/useAdmin';
 
 
 const Dashboard = () => {
-    
+
 
     const [isAdmin] = useAdmin();
 
@@ -26,12 +26,12 @@ const Dashboard = () => {
                                 <li><NavLink to="/dashboard/manageCoupons"><FaGift /> Manage Coupons</NavLink></li>
                             </>
                             :
-                                <>
-                                    <li><NavLink to="/dashboard/memberHome"><FaUser /> My Profile</NavLink></li>
-                                    <li><NavLink to="/dashboard/makePayment"><FaList /> Make Payment</NavLink></li>
-                                    <li><NavLink to="/dashboard/paymentHistory"><FaUsers /> Payment History</NavLink></li>
-                                    <li><NavLink to="/dashboard/announcements"><FaMicroblog /> Announcements</NavLink></li>
-                                </>
+                            <>
+                                <li><NavLink to="/dashboard/memberHome"><FaUser /> My Profile</NavLink></li>
+                                <li><NavLink to="/dashboard/makePayment"><FaMoneyBillAlt /> Make Payment</NavLink></li>
+                                <li><NavLink to="/dashboard/paymentHistory"><FaUsers /> Payment History</NavLink></li>
+                                <li><NavLink to="/dashboard/announcements"><FaMicroblog /> Announcements</NavLink></li>
+                            </>
                     }
 
                     <div className="divider"></div>

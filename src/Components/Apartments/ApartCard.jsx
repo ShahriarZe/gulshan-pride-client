@@ -5,12 +5,15 @@ import useAuth from "../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAgreement from "../../Hooks/useAgreement";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 
 const ApartCard = ({ item }) => {
 
     const axiosSecure = useAxiosSecure()
     const [, refetch] = useAgreement()
+    const [rotate, setRotate] = useState(false)
 
 
     const { user } = useAuth();
@@ -75,7 +78,8 @@ const ApartCard = ({ item }) => {
         }
     }
     return (
-        <div className="card card-compact  bg-base-100 shadow-xl border-2">
+        <motion.div animate={{ rotate: rotate ? 360 : 0 }}
+            onClick={() => { setRotate(!rotate) }} className="card card-compact  bg-base-100 shadow-xl border-2">
             <figure><img className=" md:h-[180px] lg:h-[300px]" src={ApartmentImage} alt="Shoes" /></figure>
             <div className="card-body">
                 <div className="flex justify-between mb-2">
@@ -92,7 +96,7 @@ const ApartCard = ({ item }) => {
                         className="btn btn-outline border-0 border-b text-red-700 bg-red-50 ">Agreement</button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 
 const ManageMembers = () => {
+
     const axiosSecure = useAxiosSecure()
     const { data: members = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -55,6 +56,21 @@ const ManageMembers = () => {
             })
     }
 
+    const handleMember = (member) => {
+        axiosSecure.patch(`/users/member/${member._id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        icon: 'success',
+                        title: `${member.name} is an Member Now`,
+                        text: 'Successfully',
+                    })
+                }
+            })
+    }
+
     return (
         <div>
             <h2>Total Members : {members.length}</h2>
@@ -68,6 +84,7 @@ const ManageMembers = () => {
                                 <th>User Name</th>
                                 <th>User Email</th>
                                 <th>Role</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -78,11 +95,17 @@ const ManageMembers = () => {
                                     <td>{member.name}</td>
                                     <td>{member.email}</td>
                                     <td>
-                                        {member.role === 'Admin' ? 'Admin' :
+                                        {member.role === 'Admin' ? 'Admin' : 
                                             <button onClick={() => handleMakeAdmin(member)} className="btn btn-sm">Make Admin</button>
                                         }
                                     </td>
-                                    <td><button onClick={() => handleDeleteMember(member)} className="btn btn-sm">Remove</button></td>
+                                    <td>
+                                        {member.role === 'Member' ? 'Member' : member.role === 'Admin' ? <button disabled className="btn btn-sm ">Make Member</button> :
+                                            <button onClick={() => handleMember(member)} className="btn btn-sm">Make Member</button>}
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleDeleteMember(member)} className="btn btn-sm">Remove</button>
+                                    </td>
                                 </tr>)
                             }
                         </tbody>

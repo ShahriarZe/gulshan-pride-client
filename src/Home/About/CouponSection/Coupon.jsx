@@ -1,6 +1,5 @@
-
-
 const Coupon = () => {
+
     const coupons = [
         { code: 'SAVE20', discount: 20 },
         { code: 'FALLSALE', discount: 15 },
