@@ -3,11 +3,13 @@ import logo from '../../assets/logo.png'
 import def from '../../assets/user.png'
 import useAuth from '../../Hooks/useAuth';
 import useAdmin from '../../Hooks/useAdmin';
+import useMemberRole from '../../Hooks/useMemberRole';
 
 const NavBar = () => {
 
     const { user, logOut } = useAuth()
     const [isAdmin] = useAdmin()
+    const [isMember] = useMemberRole()
 
     const links = <>
         <li className="lg:mr-5"><NavLink to='/'>Home</NavLink></li>
@@ -56,7 +58,10 @@ const NavBar = () => {
                                 user && isAdmin && <NavLink to='/dashboard/adminHome'><button className="btn btn-outline w-full my-2 text-red-700">Dashboard</button></NavLink>
                             }
                             {
-                                user && !isAdmin && <NavLink to='/dashboard/memberHome'><button className="btn btn-outline w-full my-2 text-red-700">Dashboard</button></NavLink>
+                                user && isMember && <NavLink to='/dashboard/memberHome'><button className="btn btn-outline w-full my-2 text-red-700">Dashboard</button></NavLink>
+                            }
+                            {
+                                user && !isAdmin && !isMember && <NavLink to='/dashboard/userHome'><button className="btn btn-outline w-full my-2 text-red-700">Dashboard</button></NavLink>
                             }
                             {
                                 user ? <button className="btn btn-outline w-full text-red-700" onClick={logOut}>SignOut</button>

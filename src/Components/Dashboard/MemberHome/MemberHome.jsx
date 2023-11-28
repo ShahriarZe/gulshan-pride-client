@@ -38,7 +38,6 @@ const MemberHome = () => {
                                         <td>{item.FloorNo}</td>
                                         <td>{item.ApartmentNo}</td>
                                         <td>{item.BlockName}</td>
-
                                     </tr>)
                                 }
                             </tbody>

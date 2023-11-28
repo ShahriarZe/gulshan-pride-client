@@ -25,7 +25,7 @@ const AdminHome = () => {
                 </div>
 
                 <div className="stat">
-                    <div className="stat-title">Total Members</div>
+                    <div className="stat-title">Total Users</div>
                     <div className="stat-value">{members.length}</div>
                 </div>
 

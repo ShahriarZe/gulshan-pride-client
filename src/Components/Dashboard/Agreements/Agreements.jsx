@@ -1,18 +1,41 @@
 
+import Swal from "sweetalert2";
 import useAllAgreements from "../../../Hooks/useAllAgreements";
-
-
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Agreements = () => {
 
-    const [allAgreements] = useAllAgreements()
-   
+    const [allAgreements, refetch] = useAllAgreements()
+    const axiosSecure = useAxiosSecure()
 
-
-
-
-
-
+    const handleAccept = (item) => {
+        axiosSecure.patch(`/allAgreements/${item._id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Agreement Accepted',
+                        text: 'Successfully',
+                    })
+                }
+            })
+    }
+    const handleReject = (item) => {
+        axiosSecure.patch(`/allAgreements/${item._id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch()
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Agreement Rejected',
+                        text: 'Successfully',
+                    })
+                }
+            })
+    }
 
     return (
         <div className="p-6">
@@ -45,14 +68,18 @@ const Agreements = () => {
                                     <td>{item.FloorNo}</td>
                                     <td>{item.ApartmentNo}</td>
                                     <td>{item.BlockName}</td>
-                                    <td>{item.role === 'Member' ? 'Checked' : 'Pending'}</td>
+                                    <td>{item.status === 'Checked' ? 'Checked' : item.status === 'Rejected' ? 'Rejected' : 'Pending'}</td>
                                     <td>
-                                        <button className="btn  btn-sm btn-accent btn-outline">
+                                        <button
+                                            onClick={() => handleAccept(item)}
+                                            className="btn  btn-sm btn-accent btn-outline">
                                             <p>Accept</p>
                                         </button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-sm btn-error btn-outline">
+                                        <button
+                                            onClick={() => handleReject(item)}
+                                            className="btn btn-sm btn-error btn-outline">
                                             <p>Reject</p>
                                         </button>
                                     </td>

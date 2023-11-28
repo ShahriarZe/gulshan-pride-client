@@ -26,6 +26,7 @@ import ManageCoupons from './Components/Dashboard/ManageCoupons/ManageCoupons';
 import AdminHome from './Components/Dashboard/AdminHome/AdminHome';
 import MemberHome from './Components/Dashboard/MemberHome/MemberHome';
 import AllAnnouncements from './Components/Dashboard/Announcements/AllAnnouncements';
+import UserHome from './Components/Dashboard/UserHome/UserHome';
 
 const queryClient = new QueryClient()
 
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
       {
         path:'announcements',
         element:<AllAnnouncements></AllAnnouncements>
+      },
+      {
+        path:'userHome',
+        element:<UserHome></UserHome>
       }
     ]
   }
