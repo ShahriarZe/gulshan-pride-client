@@ -14,6 +14,7 @@ const AdminHome = () => {
     return (
         <div className="p-6">
             <h2 className="mb-2 text-3xl">Name : {user.displayName}</h2>
+            <h2 className="my-2">Email : {user.email}</h2>
             <div className="avatar">
                 <div className="w-32 rounded">
                     <img src={user.photoURL} />

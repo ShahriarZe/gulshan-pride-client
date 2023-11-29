@@ -1,4 +1,16 @@
+import Swal from "sweetalert2";
+
 const Coupon = () => {
+
+    const handleCoupon=()=>{
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Coupon Applied",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    }
 
     const coupons = [
         { code: 'SAVE20', discount: 20 },
@@ -7,16 +19,16 @@ const Coupon = () => {
         { code: 'SUMMER25', discount: 25 },
     ];
     return (
-        <div className="bg-gray-100 p-8 mb-10 mt-10">
+        <div className="bg-gray-100 p-8 mb-20 mt-10">
             <h2 className="text-2xl font-bold mb-4 text-center">Available Coupons For Apartments</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 max-w-5xl mx-auto ">
                 {coupons.map((coupon) => (
-                    <div key={coupon.code} className="bg-white p-4 border border-red-700 rounded">
+                    <div key={coupon.code} className="bg-white p-4 border border-red-700  rounded-xl">
                         <p className="font-bold text-lg mb-2">{coupon.code}</p>
                         <div className="flex justify-between">
                             <p>{coupon.discount}% off</p>
-                            <button className="btn btn-sm">Apply</button>
+                            <button onClick={handleCoupon} className="btn btn-sm btn-outline border-0 border-b text-red-700 bg-red-50 ">Apply</button>
                         </div>
                     </div>
                 ))}
