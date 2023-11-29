@@ -27,6 +27,7 @@ import AdminHome from './Components/Dashboard/AdminHome/AdminHome';
 import MemberHome from './Components/Dashboard/MemberHome/MemberHome';
 import AllAnnouncements from './Components/Dashboard/Announcements/AllAnnouncements';
 import UserHome from './Components/Dashboard/UserHome/UserHome';
+import Payment from './Components/Dashboard/Payment/Payment';
 
 const queryClient = new QueryClient()
 
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
       {
         path:'userHome',
         element:<UserHome></UserHome>
+      },
+      {
+        path:'makePayment',
+        element:<Payment></Payment>
       }
     ]
   }

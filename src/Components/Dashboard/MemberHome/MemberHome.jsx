@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useAgreement from "../../../Hooks/useAgreement";
 import useAuth from "../../../Hooks/useAuth";
 
@@ -27,6 +28,7 @@ const MemberHome = () => {
                                     <th>Floor No</th>
                                     <th>Room No</th>
                                     <th>Block No</th>
+                                    <th>Action</th>
 
                                 </tr>
                             </thead>
@@ -38,6 +40,9 @@ const MemberHome = () => {
                                         <td>{item.FloorNo}</td>
                                         <td>{item.ApartmentNo}</td>
                                         <td>{item.BlockName}</td>
+                                        <td><Link to="/dashboard/makePayment">
+                                            <button className="btn btn-sm btn-error btn-outline">Pay</button>
+                                        </Link></td>
                                     </tr>)
                                 }
                             </tbody>
