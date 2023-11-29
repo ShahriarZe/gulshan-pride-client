@@ -28,6 +28,7 @@ import MemberHome from './Components/Dashboard/MemberHome/MemberHome';
 import AllAnnouncements from './Components/Dashboard/Announcements/AllAnnouncements';
 import UserHome from './Components/Dashboard/UserHome/UserHome';
 import Payment from './Components/Dashboard/Payment/Payment';
+import PaymentHistory from './Components/Dashboard/PaymentHistory/PaymentHistory';
 
 const queryClient = new QueryClient()
 
@@ -95,6 +96,10 @@ const router = createBrowserRouter([
       {
         path:'makePayment',
         element:<Payment></Payment>
+      },
+      {
+        path:'paymentHistory',
+        element:<PaymentHistory></PaymentHistory>
       }
     ]
   }
