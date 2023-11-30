@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [isMember] = useMemberRole()
 
     return (
-        <div className="flex max-w-7xl mx-auto">
+        <div className="flex container mx-auto">
             <div className="w-44 lg:w-64 min-h-screen bg-red-300">
                 <ul className="menu ">
                     <img className='p-2' src={logo} alt="" />

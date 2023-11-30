@@ -1,10 +1,10 @@
-import { Container, Typography, Grid, Link, Divider } from '@mui/material';
+import { Typography, Grid, Link, Divider } from '@mui/material';
 import logo from '../../assets/logo.png';
 
 const Footer = () => {
     return (
 
-        <Container sx={{ borderTop: '2px solid #d32f2f', backgroundColor: '#f3f4f6' }}>
+        <div style={{ padding: '20px', borderTop: '2px solid #d32f2f' }}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <img
@@ -18,7 +18,7 @@ const Footer = () => {
                     </Typography>
                 </Grid>
             </Grid>
-            <Divider sx={{ my: 2, borderColor: '#d32f2f' }} />
+            <Divider sx={{ my: 2,mx:6, borderColor: '#d32f2f' }} />
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={3}>
                     <Typography variant="h6" className="footer-title">
@@ -61,7 +61,7 @@ const Footer = () => {
                     </Link>
                 </Grid>
             </Grid>
-        </Container>
+            </div>
 
     );
 };

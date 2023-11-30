@@ -38,11 +38,11 @@ const Agreements = () => {
     }
 
     return (
-        <div className="p-6">
+        <div className="p-6 container mx-auto">
             <h2>Total Agreements Request : {allAgreements.length}</h2>
             <div>
                 <div className="overflow-x-auto">
-                    <table className="table">
+                    <table className="table w-full">
                         {/* head */}
                         <thead>
                             <tr>

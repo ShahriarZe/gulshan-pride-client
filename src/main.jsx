@@ -83,7 +83,7 @@ const router = createBrowserRouter([
       // Members routes
       {
         path: 'memberHome',
-        element: <MemberHome></MemberHome>
+        element: <PrivateRoute><MemberHome></MemberHome></PrivateRoute>
       },
       {
         path:'announcements',
@@ -91,15 +91,15 @@ const router = createBrowserRouter([
       },
       {
         path:'userHome',
-        element:<UserHome></UserHome>
+        element:<PrivateRoute><UserHome></UserHome></PrivateRoute>
       },
       {
         path:'makePayment',
-        element:<Payment></Payment>
+        element:<PrivateRoute><Payment></Payment></PrivateRoute>
       },
       {
         path:'paymentHistory',
-        element:<PaymentHistory></PaymentHistory>
+        element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
       }
     ]
   }

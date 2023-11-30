@@ -72,7 +72,7 @@ const ManageMembers = () => {
     }
 
     return (
-        <div>
+        <div className="p-6 container mx-auto">
             <h2>Total Members : {members.length}</h2>
             <div>
                 <div className="overflow-x-auto">

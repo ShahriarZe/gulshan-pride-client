@@ -39,7 +39,7 @@ const Apartments = () => {
     const currentItems = apart.slice(indexOfFirstItem, indexOfLastItem);
 
     return (
-        <div>
+        <div className="mb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto gap-6 py-10">
                 {currentItems.map(item => (
                     <ApartCard key={item.ID} item={item}></ApartCard>
