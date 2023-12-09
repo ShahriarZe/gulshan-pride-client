@@ -1,5 +1,6 @@
 # GulshanPride LTD
 ## Live Link : https://gulshan-pride.web.app/
+## Server Link : https://github.com/ShahriarZe/gulshan-pride-server
 ## Technology Used : React,MongoDB,Firebase,JWT,Stripe,Tailwind CSS,DaisyUI & Material UI.
 
 ## Features :
